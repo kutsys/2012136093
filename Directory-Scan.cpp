@@ -25,7 +25,8 @@ void printdir(char* dir, int depth){
                         if(entry->d_name[0]=='.')//숨김파일은 컨티뉴
 				continue;
                         printf("%*s%s/\n",depth,"",entry->d_name);
-                        /*Recurse at a new indent level*/
+                        printdir(entry->d_name,depth+6);
+			/*Recurse at a new indent level*/
                 } else {//디렉토리가 아닌 다른 파일 이라면(실행파일)
                         if(entry->d_name[0]=='.') //숨김파일은 컨티뉴
 				continue;
@@ -37,8 +38,8 @@ void printdir(char* dir, int depth){
 }
 
 int main(){
-        printf("Directory scan of /home/e:\n");
-        printdir("/home/e",0);//현재 위치까지 정해주어야함(사용자 이름 e)
+        printf("Directory scan of /home/lee:\n");
+        printdir("/home/lee",0);//현재 위치까지 정해주어야함(사용자 이름 e)
         printf("done.\n");
         exit(0);
 }
